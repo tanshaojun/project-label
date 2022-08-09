@@ -1,0 +1,24 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-provider-8004
+
+eureka:
+  client:
+    # 注册进Eureka的服务中心
+    register-with-eureka: true
+    # 检索服务中心的其它服务
+    fetch-registry: true
+    service-url:
+      # 设置与Eureka Server交互的地址
+#      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: cloudProvider8001 #在eureka里面显示的主机名称
+    prefer-ip-address: true #在eureka里面显示ip+addr
+    # eureka客户端服务端发送心跳的时间间隔,默认30s
+    lease-renewal-interval-in-seconds: 1
+    # eureka服务端在收到最后一次心跳后等待时间上限，超时会被剔除。默认90s
+    lease-expiration-duration-in-seconds: 2

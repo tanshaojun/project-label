@@ -1,0 +1,26 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-feign-80
+
+eureka:
+  client:
+    # 注册进Eureka的服务中心
+    register-with-eureka: true
+    # 检索服务中心的其它服务
+    fetch-registry: true
+    service-url:
+      # 设置与Eureka Server交互的地址
+      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/
+
+ribbon:
+  # 建立连接所用的时间
+  ReadTimeout: 5000
+  # 建立之后从服务器读取需要的时间
+  ConnectTimeout: 5000
+logging:
+  level:
+    # 已什么日志监控什么接口
+    com.tsj.springcloud.service.ProviderService: debug
