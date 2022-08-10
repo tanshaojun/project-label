@@ -1,22 +1,20 @@
 server:
-  port: 8001
+  port: 9001
 
 spring:
   application:
-    name: cloud-provider
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://localhost:3306/tsj-cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: root
-
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.tsj.springcloud.entities  # 所有Entity别名类所在包
-
-
+    name: cloud-gateway-9001
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: provider-8001-1
+#          uri: http://localhost:8001
+          uri: lb://cloud-provider
+          predicates:
+            - Path=/provider/get/**
 eureka:
   client:
     # 注册进Eureka的服务中心
@@ -25,7 +23,7 @@ eureka:
     fetch-registry: true
     service-url:
       # 设置与Eureka Server交互的地址
-#      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/
+      #      defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/
       defaultZone: http://localhost:7001/eureka/
   instance:
     instance-id: cloudProvider8001 #在eureka里面显示的主机名称
