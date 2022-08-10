@@ -19,6 +19,9 @@
         <module>cloud-provider-hystrix-8004</module>
         <module>cloud-consumer-feign-hystrix</module>
         <module>cloud-gateway-9001</module>
+        <module>cloud-nacos-provider-8005</module>
+        <module>cloud-nacos-provider-8006</module>
+        <module>cloud-nacos-consumer</module>
     </modules>
     <packaging>pom</packaging>
     <name>label01</name>
