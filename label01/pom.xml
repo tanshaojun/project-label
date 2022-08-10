@@ -22,6 +22,7 @@
         <module>cloud-nacos-provider-8005</module>
         <module>cloud-nacos-provider-8006</module>
         <module>cloud-nacos-consumer</module>
+        <module>cloud-nacos-config-9002</module>
     </modules>
     <packaging>pom</packaging>
     <name>label01</name>
