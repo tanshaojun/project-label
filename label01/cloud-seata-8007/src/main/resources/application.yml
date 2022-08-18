@@ -1,0 +1,24 @@
+server:
+  port: 8007
+
+spring:
+  application:
+    name: cloud-seate-8007
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/seata_order?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: tsj-tx-group # 需要在nacos里面配置 Data Id:service.vgroupMapping.tsj-tx-group  Group: SEATA_GROUP 值：default
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.tsj.springcloud.entities,com.tsj.springcloud.entity  # 所有Entity别名类所在包

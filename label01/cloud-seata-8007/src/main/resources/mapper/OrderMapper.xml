@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tsj.springcloud.mapper.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.tsj.springcloud.entity.Order">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="user_id" property="userId" jdbcType="BIGINT"/>
+        <id column="product_id" property="productId" jdbcType="BIGINT"/>
+        <id column="count" property="count" jdbcType="BIGINT"/>
+        <id column="money" property="money" jdbcType="DECIMAL"/>
+        <id column="state" property="state" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <insert id="create" parameterType="com.tsj.springcloud.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into orders(user_id, product_id, count, money, state)
+        values (#{userId}, #{productId}, #{count}, #{money}, 0)
+    </insert>
+
+
+    <update id="updateState">
+        update orders
+        set state = #{state}
+        where user_id = #{userId}
+    </update>
+
+</mapper>
